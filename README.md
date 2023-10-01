@@ -6,6 +6,7 @@ Table of Contents
 - [Graphical Interface](#Graphical_Interface)
 - [Machine Learning Model](#Machine_Learning_Model)
 - [Training](#Training)
+  - [Rewarding Policy](#Rewarding_Policy)
 - [Code Structure](#Code_Structure)
 - [License](#License)
 
@@ -24,6 +25,14 @@ The graphical interface is built using Pygame. It displays the Minesweeper board
 
 # Machine_Learning_Model
 The AI utilizes a Deep Q-Network (DQN) implemented with TensorFlow and Keras. The model is trained continuously as the AI plays the game, learning to make better decisions over time.
+
+### Rewarding_Policy
+In this Minesweeper AI, the agent can perform two types of actions: clicking a cell or toggling a flag on a cell. The reward function is designed to guide the agent to make optimal decisions based on the current state of the game. Below is the rewarding policy used in the model:
+
+1. Click Action (`action == 1`):
+  - **Clicking a Revealed Cell (`combine_matrix[x][y] != 9`:**
+    - Reward: `-2`
+    - This is considered a suboptimal action, as clicking an already revealed cell does not provide any new information.
 
 # Training
 The model is trained using a combination of experiences from winning, losing, and ongoing games. The training process involves adjusting the Q-values of the chosen actions based on the received rewards and the maximum Q-value of the next state, following the Q-learning update rule.
