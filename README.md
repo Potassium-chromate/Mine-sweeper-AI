@@ -6,8 +6,8 @@ Table of Contents
 - [Graphical Interface](#Graphical_Interface)
 - [Machine Learning Model](#Machine_Learning_Model)
 - [Training](#Training)
-- [Code Structure](#)
-- License
+- [Code Structure](#Code_Structure)
+- [License](#License)
 
 # Dependencies
 This project requires the following libraries:
@@ -26,7 +26,7 @@ The AI utilizes a Deep Q-Network (DQN) implemented with TensorFlow and Keras. Th
 # Training
 The model is trained using a combination of experiences from winning, losing, and ongoing games. The training process involves adjusting the Q-values of the chosen actions based on the received rewards and the maximum Q-value of the next state, following the Q-learning update rule.
 
-# Code Structure
+# Code_Structure
 - `main.py`: The main file to run the Minesweeper AI.
 - `minesweeper_logic.py`: Contains the logic for the Minesweeper game, including functions to reveal tiles,       place flags, and check win/lose conditions.
 - `minesweeper_training.py`: Contains the logic for training the AI, including the DQN implementation and the     training loop.
