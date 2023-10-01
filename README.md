@@ -18,7 +18,9 @@ This project requires the following libraries:
 - Numpy
 
 # Graphical_Interface
-The graphical interface is built using Pygame. It displays the Minesweeper board, game statistics, and training variables. The interface updates in real-time as the AI plays the game.
+The graphical interface is built using Pygame. It displays the Minesweeper board, game statistics, and training variables. The interface updates in real-time as the AI plays the game. 
+
+![](https://github.com/Potassium-chromate/Mine-sweeper-AI/blob/main/picture/interface.png)
 
 # Machine_Learning_Model
 The AI utilizes a Deep Q-Network (DQN) implemented with TensorFlow and Keras. The model is trained continuously as the AI plays the game, learning to make better decisions over time.
