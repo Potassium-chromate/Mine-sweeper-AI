@@ -29,10 +29,29 @@ The AI utilizes a Deep Q-Network (DQN) implemented with TensorFlow and Keras. Th
 ### Rewarding_Policy
 In this Minesweeper AI, the agent can perform two types of actions: clicking a cell or toggling a flag on a cell. The reward function is designed to guide the agent to make optimal decisions based on the current state of the game. Below is the rewarding policy used in the model:
 
-1. Click Action (`action == 1`):
+1. **Click Action (`action == 1`):**
   - **Clicking a Revealed Cell (`combine_matrix[x][y] != 9`:**
     - Reward: `-2`
     - This is considered a suboptimal action, as clicking an already revealed cell does not provide any new information.
+  - **Clicking a Mine (`combine_matrix[x][y] == 9 and board[x][y] == -1`):**
+    - Reward: `-1`
+    - This action leads to losing the game, thus receiving a negative reward.
+  - **Clicking an Unknown Cell (`combine_matrix[x][y] == 9 and board[x][y] != -1`):**
+    - Reward: `10`
+    - This is considered a good action, as it reveals new information without hitting a mine.
+2. **Toggle Flag Action (`action == -1`):**
+  - **Toggling Flag on the Last Mine (`minesweeper_logic.pre_check_win returns True`):**
+    - Reward: `50`
+    - This action leads to winning the game, thus receiving a high positive reward.
+  - **Toggling Flag on a Mine (`combine_matrix[x][y] == 9 and board[x][y] == -1`):**
+    - Reward: `1`
+    - Correctly flagging a mine is a good action, receiving a positive reward.
+  - **Toggling Flag on a Wrong Place (`combine_matrix[x][y] == 9 and board[x][y] != -1`):**
+    - Reward: `-0.5`
+    - Incorrectly flagging a cell is a suboptimal action, receiving a small negative reward.
+  - **Toggling Flag on a Revealed Cell (`combine_matrix[x][y] != 9`):**
+    - Reward: `-2`
+    - This is considered a suboptimal action, as flagging an already revealed cell does not conform to the game rules.
 
 # Training
 The model is trained using a combination of experiences from winning, losing, and ongoing games. The training process involves adjusting the Q-values of the chosen actions based on the received rewards and the maximum Q-value of the next state, following the Q-learning update rule.
