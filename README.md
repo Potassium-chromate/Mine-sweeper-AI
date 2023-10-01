@@ -53,6 +53,20 @@ In this Minesweeper AI, the agent can perform two types of actions: clicking a c
     - Reward: `-2`
     - This is considered a suboptimal action, as flagging an already revealed cell does not conform to the game rules.
 
+### Model Structure:
+The model is a Convolutional Neural Network (CNN) with the following layers:
+
+1. **Input Layer:**
+  - Conv2D Layer with 128 filters, a 5x5 kernel, 'relu' activation, and 'same' padding.
+  - Input Shape: `(size, size, 1)`
+2. **Hidden Layers:**
+  - Conv2D Layer with 128 filters, a 1x1 kernel, 'relu' activation, and 'same' padding.
+  - Flatten Layer to flatten the 2D matrix data to a vector.
+  - Dense Layers with 'relu' activation and varying units: 512, 1024, 512.
+  - Dropout Layers with a dropout rate of 0.2 to prevent overfitting.
+3. **Output Layer:**
+  - Dense Layer with `size**2` units and 'linear' activation.
+
 # Training
 The model is trained using a combination of experiences from winning, losing, and ongoing games. The training process involves adjusting the Q-values of the chosen actions based on the received rewards and the maximum Q-value of the next state, following the Q-learning update rule.
 
