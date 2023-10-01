@@ -7,6 +7,7 @@ Table of Contents
 - [Machine Learning Model](#Machine_Learning_Model)
 - [Training](#Training)
   - [Rewarding Policy](#Rewarding_Policy)
+  - [Model Structure](#Model_Structure)
 - [Code Structure](#Code_Structure)
 - [License](#License)
 
@@ -53,7 +54,7 @@ In this Minesweeper AI, the agent can perform two types of actions: clicking a c
     - Reward: `-2`
     - This is considered a suboptimal action, as flagging an already revealed cell does not conform to the game rules.
 
-### Model Structure:
+### Model_Structure:
 The model is a Convolutional Neural Network (CNN) with the following layers:
 
 1. **Input Layer:**
