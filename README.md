@@ -3,7 +3,7 @@ This project contains an implementation of Minesweeper game logic and an AI that
 
 Table of Contents
 - [Dependencies](#Dependencies)
-- [Graphical Interface](#Graphical Interface)
+- [Graphical Interface](#Graphical_Interface)
 - Machine Learning Model
 - Code Structure
 - Contributing
