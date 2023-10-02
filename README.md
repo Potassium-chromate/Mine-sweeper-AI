@@ -48,6 +48,8 @@ If the agent successfully reveals all cells without mines and flags all cells wi
 ### Model_Structure:
 The model is a Convolutional Neural Network (CNN) with the following layers:
 
+![](https://github.com/Potassium-chromate/Mine-sweeper-AI/blob/main/picture/structure%20for%20size%209.png)
+
 1. **Input Layer:**
   - Conv2D Layer with 128 filters, a 5x5 kernel, 'relu' activation, and 'same' padding.
   - Input Shape: `(size, size, 1)`
