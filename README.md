@@ -28,31 +28,22 @@ The graphical interface is built using Pygame. It displays the Minesweeper board
 The AI utilizes a Deep Q-Network (DQN) implemented with TensorFlow and Keras. The model is trained continuously as the AI plays the game, learning to make better decisions over time.
 
 ### Rewarding_Policy
-In this Minesweeper AI, the agent can perform two types of actions: clicking a cell or toggling a flag on a cell. The reward function is designed to guide the agent to make optimal decisions based on the current state of the game. Below is the rewarding policy used in the model:
+The AI agent receives rewards or penalties based on its actions during the game, which helps it learn the optimal strategy for playing Minesweeper. Here’s a breakdown of the rewarding policy:
 
-1. **Click Action (`action == 1`):**
-  - **Clicking a Revealed Cell (`combine_matrix[x][y] != 9`:**
-    - Reward: `-2`
-    - This is considered a suboptimal action, as clicking an already revealed cell does not provide any new information.
-  - **Clicking a Mine (`combine_matrix[x][y] == 9 and board[x][y] == -1`):**
-    - Reward: `-1`
-    - This action leads to losing the game, thus receiving a negative reward.
-  - **Clicking an Unknown Cell (`combine_matrix[x][y] == 9 and board[x][y] != -1`):**
-    - Reward: `10`
-    - This is considered a good action, as it reveals new information without hitting a mine.
-2. **Toggle Flag Action (`action == -1`):**
-  - **Toggling Flag on the Last Mine (`minesweeper_logic.pre_check_win returns True`):**
-    - Reward: `50`
-    - This action leads to winning the game, thus receiving a high positive reward.
-  - **Toggling Flag on a Mine (`combine_matrix[x][y] == 9 and board[x][y] == -1`):**
-    - Reward: `1`
-    - Correctly flagging a mine is a good action, receiving a positive reward.
-  - **Toggling Flag on a Wrong Place (`combine_matrix[x][y] == 9 and board[x][y] != -1`):**
-    - Reward: `-0.5`
-    - Incorrectly flagging a cell is a suboptimal action, receiving a small negative reward.
-  - **Toggling Flag on a Revealed Cell (`combine_matrix[x][y] != 9`):**
-    - Reward: `-2`
-    - This is considered a suboptimal action, as flagging an already revealed cell does not conform to the game rules.
+1. **Clicking a Revealed Cell:** `-0.3`  
+If the agent clicks on a cell that has already been revealed, it receives a penalty of `-0.3`.
+
+3. **Hitting a Mine:** `-1`    
+If the agent reveals a cell containing a mine, it receives a penalty of `-1`, representing the highest penalty, as it leads to losing the game.
+
+4. **Successful Progress:** `0.6`   
+If the agent reveals a cell that progresses the game (i.e., revealing a cell that is not a mine and has not been revealed yet), it receives a reward of `0.6`.
+
+5. **YOLO Move:** `-0.2`   
+If the agent makes a move that doesn’t progress the game or hit a mine, it receives a penalty of `-0.2`.
+
+6. **Winning the Game:** `1`   
+If the agent successfully reveals all cells without mines and flags all cells with mines, it receives the maximum reward of `1`.
 
 ### Model_Structure:
 The model is a Convolutional Neural Network (CNN) with the following layers:
