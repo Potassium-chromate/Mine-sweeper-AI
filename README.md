@@ -65,9 +65,9 @@ The model is a Convolutional Neural Network (CNN) with the following layers:
 The model is trained using a combination of experiences from winning, losing, and ongoing games. The training process involves adjusting the Q-values of the chosen actions based on the received rewards and the maximum Q-value of the next state, following the Q-learning update rule.
 
 # Code_Structure
-- `main.py`: The main file to run the Minesweeper AI.
+- `set_model.py`: This script is responsible for initializing the model architecture. The model, once initialized, is saved and is later trained in a separate script or module, where it learns to make decisions based on the game environment and the defined rewarding policy.
 - `minesweeper_logic.py`: Contains the logic for the Minesweeper game, including functions to reveal tiles,       place flags, and check win/lose conditions.
-- `minesweeper_training.py`: Contains the logic for training the AI, including the DQN implementation and the     training loop.
+- `keep_training.py`: This script is designed to continuously train the pre-initialized model on the Minesweeper game environment using a reinforcement learning approach. It employs a Deep Q-Network (DQN) agent to interact with the game and learn the optimal actions to take in different states.
 
 # License
 This project is licensed under the MIT License - see the LICENSE file for details.
